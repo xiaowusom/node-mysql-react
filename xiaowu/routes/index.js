@@ -36,6 +36,11 @@ router.get("/add",function(req , res ,next) {
   // var modify = 'select*,count(distinct name) from table group by neme';
   // var modify = 'FROM ablum a LEFT JSON '
   connection.query(addSql,function (err,rows, result) {
+    connection.query('select * from pets',function(err,rows,fields){
+  if(err) throw err;
+  arr = rows;
+  console.log(arr);
+});
   
 });
     
@@ -53,6 +58,11 @@ router.post("/del",function(req,res){
     }else {
       res.send("删除成功");
     }
+    connection.query('select * from pets',function(err,rows,fields){
+  if(err) throw err;
+  arr = rows;
+  console.log(arr);
+});
   })
 })
 
