@@ -1,0 +1,81 @@
+
+.App .left {
+  float: left;
+  margin-left:20px;
+}
+.App>.left>li{
+  width: 20%;
+  height: 60px;
+  list-style: none;
+  background: skyblue;
+  text-align: center;
+  line-height: 60px;
+  border-bottom: 1px solid gray;
+  min-width: 120px;
+  cursor:pointer;
+
+}
+.right{
+  width: 70%;
+  height: 500px;
+  border: 1px solid red;
+  float: right;
+  margin-bottom:30px;
+}
+#right_img{
+  width: 70%;
+  height: 500px;
+}
+.btn{
+  display: inline-block;
+  width: 120px;
+  height: 36px;
+  border-radius:5px;
+  background: #83DBFF;
+  border: none;
+  outline: none;
+}
+.linkText{
+  display: inline-block;
+  width: 180px;
+  height: 36px;
+  border: 2px solid #83DBFF;
+  outline: none;
+  border-radius:5px;
+  margin-right:5px;
+  /*margin:20px 30px 0 100px;*/
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+.addText {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .delete{
+    color:red;
+    float:right;
+    cursor:pointer;
+  }
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
