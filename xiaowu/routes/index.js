@@ -32,15 +32,24 @@ router.get("/add",function(req , res ,next) {
  	var imgUrl=req.body.imgUrl;
   console.log("我是小五");
   for(var i = 0; i <arr.length; i++){
-    if(req.body.name===arr[i].name){
-      console.log("我撞衫了");
-         connection.query("update pets set imgUrl='"+ imgUrl + "' where name='"+ name + "'" ,function(err,rows,fields){
+    if(name===arr[i].name){
+      var arrId = arr[i].id;
+      console.log(arrId);
+    connection.query('select * from pets where name="'+ name + '"',function(err,rows,fields){
+      connection.query("update pets set imgUrl='"+ imgUrl + "' where id='"+ arrId + "'" ,function(err,rows,fields){
           connection.query('select * from pets',function(err,rows,fields){
           if(err) throw err;
           arr = rows;
   
          });     
        });
+  
+});
+
+
+
+
+     
     }else {
         var  addSql = 'insert into pets(id, name, imgUrl) values("'+ id + '","'+ name + '","'+ imgUrl +'")'
         // var modify = 'select*,count(distinct name) from table group by neme';
