@@ -14,7 +14,7 @@ class App extends Component {
     } 
   }
   componentDidMount () {
-      $.get('http://localhost:3005',function(data){
+      $.get('http://localhost:3006',function(data){
         console.log(data);
         let gotServices = data;
                     //好了，我们获得了service列表，使用setState方法覆盖当前元素的services数据
@@ -65,7 +65,7 @@ class App extends Component {
   }
   delete(index){
     var id = this.state.arr[index].id.toString();
-    $.post('http://localhost:3005/del',{"id":id},function(data){ 
+    $.post('http://localhost:3006/del',{"id":id},function(data){ 
        
 
       }.bind(this))
@@ -86,7 +86,7 @@ class App extends Component {
     var title=$("#title").val();
     var link=$("#link").val();
     console.log(userId+title+link);
-    $.post('http://localhost:3005/add',{"id":userId,"name":title,"imgUrl":link},function(data){ 
+    $.post('http://localhost:3006/add',{"id":userId,"name":title,"imgUrl":link},function(data){ 
        return;
 
       }.bind(this))
