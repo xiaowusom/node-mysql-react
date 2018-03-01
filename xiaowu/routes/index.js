@@ -2,8 +2,6 @@ var express = require('express');
 var router = express.Router();
 const Sequelize = require('sequelize');
 var mysql = require('mysql');
-
-
 /* GET home page. */
 var connection = mysql.createConnection({
 host     : 'localhost',
@@ -23,47 +21,41 @@ router.get('/', function(req, res, next) {
 });
 
 // 添加用户
-router.get("/add",function(req , res ,next) {
-	res.render("add");
-})
+// router.get("/add",function(req , res ,next) {
+// 	res.render("add");
+// })
  router.post('/add', function(req, res, next) {
  	var id=req.body.id;
  	var name=req.body.name;
  	var imgUrl=req.body.imgUrl;
-  console.log("我是小五");
   for(var i = 0; i <arr.length; i++){
     if(name===arr[i].name){
-      var arrId = arr[i].id;
-      console.log(arrId);
-    connection.query('select * from pets where name="'+ name + '"',function(err,rows,fields){
-      connection.query("update pets set imgUrl='"+ imgUrl + "' where id='"+ arrId + "'" ,function(err,rows,fields){
+      var userName = name;
+      console.log(userName);
+    }
+  }  
+    if(userName){
+      console.log("我执行了更新语句");
+      connection.query("update pets set imgUrl='"+ imgUrl + "' where name='"+ userName + "'" ,function(err,rows,fields){
+        console.log("update pets set imgUrl='"+ imgUrl + "' where name='"+ userName + "'" );
           connection.query('select * from pets',function(err,rows,fields){
           if(err) throw err;
           arr = rows;
-  
          });     
-       });
-  
-});
-
-
-
-
-     
-    }else {
-        var  addSql = 'insert into pets(id, name, imgUrl) values("'+ id + '","'+ name + '","'+ imgUrl +'")'
-        // var modify = 'select*,count(distinct name) from table group by neme';
-      // var modify = 'FROM ablum a LEFT JSON '
-       connection.query(addSql,function (err,rows, result) {
-    connection.query('select * from pets',function(err,rows,fields){
-  if(err) throw err;
-  arr = rows;
-  
+       });  
+    }else{
+          console.log(name);
+          console.log(arr[i].name);
+          console.log("我执行了插入语句");
+      var  addSql = 'insert into pets(id, name, imgUrl) values("'+ id + '","'+ name + '","'+ imgUrl +'")'
+      connection.query(addSql,function (err,rows, result) {
+      connection.query('select * from pets',function(err,rows,fields){
+      if(err) throw err;
+      arr = rows; 
 });
   
 });
     }
-  }  
 });
 
 // 删除用户
@@ -72,7 +64,7 @@ router.post("/del",function(req,res){
   var daletdata="delete from pets where id ='"+ id + "'";
   // var userId = JSON.stringify(id);
   connection.query(daletdata,function(err,rows){
-    console.log("delete from pets where id ='"+ id + "'")
+    // console.log("delete from pets where id ='"+ id + "'")
     if(err){
       res.send("删除失败"+err);
     }else {
@@ -81,7 +73,7 @@ router.post("/del",function(req,res){
     connection.query('select * from pets',function(err,rows,fields){
   if(err) throw err;
   arr = rows;
-  console.log(arr);
+  // console.log(arr);
 });
   })
 })
